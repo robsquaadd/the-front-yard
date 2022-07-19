@@ -6,6 +6,7 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3001;
 const exphbars = require('express-handlebars');
+// const hbars = exphbars.create({});
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
@@ -20,7 +21,8 @@ const sess = {
 };
 
 app.use(session(sess));
-// app.engine('handlebars', engine());
+
+// app.engine('handlebars' .engine);
 // app.set('view engine', 'handlebars');
 
 app.use(express.json());
