@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-const { Post, User, Categories } = require('../../models');
+const { Post, User, Category } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // get all users
@@ -11,8 +11,11 @@ router.get("/", (req, res) => {
     include: [ 
         {
           model: User,
-          attributes: ["username"],
-        
+          attributes: ["username"],  
+      },
+      {
+        model: Category, 
+        attributes: ["id", "category_name"]
       }
     ],
   })
@@ -35,6 +38,10 @@ router.get("/:id", (req, res) => {
           model: User,
           attributes: ["username"],
         },
+        {
+          model: Category, 
+          attributes: ["id", "category_name"]
+        }
     ],
   })
     .then((dbPostData) => {
@@ -55,7 +62,8 @@ router.post("/", withAuth, (req, res) => {
     title: req.body.title,
     description: req.body.description,
     price: req.body.price,
-    user_id: req.body.user_id
+    user_id: req.body.user_id,
+    category_id: req.body.category_id
   })
     .then((dbPostData) => res.json(dbPostData))
     .catch((err) => {
@@ -69,7 +77,8 @@ router.put("/:id", withAuth, (req, res) => {
     {
       title: req.body.title,
       description: req.body.description,
-      price: req.body.price
+      price: req.body.price,
+      category_id: req.body.category_id
     },
     {
       where: {
