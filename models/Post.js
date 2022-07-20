@@ -12,6 +12,13 @@ Post.init(
         primaryKey: true,
         autoIncrement: true
       },
+      image: {
+        type: DataTypes.BLOB,
+        allowNull: true,
+        validate: {
+          len: [100]
+        }
+      },
       title: {
         type: DataTypes.STRING,
         allowNull: false
