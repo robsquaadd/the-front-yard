@@ -12,6 +12,7 @@ const seedAll = async () => {
   console.log('--------------');
 
   await seedCategories();
+  console.log('----------------')
 
   await seedPost();
   console.log('--------------');

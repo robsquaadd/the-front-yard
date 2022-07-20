@@ -5,10 +5,13 @@ const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+const helpers = require('./utils/helpers')
 const exphbars = require('express-handlebars');
-// const hbars = exphbars.create({});
+const hbars = exphbars.create({ helpers });
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
+const fileUpload = require('express-fileupload');
 
 const sess = {
   secret: 'Super secret secret',
@@ -22,13 +25,15 @@ const sess = {
 
 app.use(session(sess));
 
-// app.engine('handlebars' .engine);
-// app.set('view engine', 'handlebars');
+app.engine('handlebars', hbars.engine);
+app.set('view engine', 'handlebars');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(routes);
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'uploads')))
+app.use(fileUpload());
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => {
