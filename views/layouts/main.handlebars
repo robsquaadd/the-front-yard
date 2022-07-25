@@ -25,29 +25,23 @@
             src="./images/image.png"
           />
         </a>
-        <ul class="nav col-4 col-md-auto mb-2 justify-content-center mb-md-0">
-          <li><a
-              href="#"
-              class="nav-link fs-4 px-2 link-secondary"
-            >Home</a></li>
-          <li><a
-              href="#"
-              class="nav-link fs-4 px-2 link-dark"
-            >Categories</a></li>
-          <li><a href="#" class="nav-link fs-4 px-2 link-dark">About</a></li>
-        </ul>
-        <div class="col-md-4 text-end">
-          <button type="button listing" class="btn btn-outline-danger me-2">Add
-            Listing</button>
-          <button
+        <div class="col-md-4 text-end">{{#if loggedIn}}
+          <a href="/dashboard"><button type="button listing" class="btn btn-outline-danger me-2">Add
+            Listing</button></a>
+            <button type="button" class="btn btn-danger" id="logout-btn">Logout</button>
+            {{else}}
+          <a href="/login"><button
             type="button"
-            class="btn btn-outline-danger me-2"
-          >Login</button>
-          <button type="button" class="btn btn-danger">Sign-up</button>
+            class="btn btn-outline-danger me-2">Login</button></a>
+           
+          <a href="/login"><button type="button" class="btn btn-danger">Sign-up</button></a>
+           {{/if}}
         </div>
       </header>
     </div>
     {{{body}}}
-
+    {{#if loggedIn}}
+     <script> src='/javascript/logout.js'</script>
+    {{/if}}
   </body>
 </html>
