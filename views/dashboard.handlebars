@@ -1,7 +1,7 @@
 
-<form class="new-post-form" action="/" method="POST" enctype="multipart/form-data">
-<h4>Upload a photo</h4>
-<input type="file" name="imageFile" accept="image/*"/>
+<form class="new-post-form" method="POST" enctype="multipart/form-data">
+{{!-- <h4>Upload a photo</h4>
+<input type="file" name="imageFile" accept="image/*"/> --}}
   <div>
       <label for="post-title">Title</label>
       <input type="text" id="post-title" name="post-title" />
@@ -17,4 +17,10 @@
     <button type="submit" class="">Create Listing</button>
 </form>
 
+{{#if posts.length}}
+  <section>
+    <h3>Your Listings</h3>
+    {{> cards posts}}
+  </section>
+{{/if}}
 <script src="/javascript/create-post.js"></script>

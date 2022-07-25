@@ -57,27 +57,27 @@ router.get("/:id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  let imageFile;
-  let uploadPath;
+  // let imageFile;
+  // let uploadPath;
 
-  if (!req.files || Object.keys(req.files).length === 0) {
-    return res.status(400).send("No images were uploaded.");
-  }
+  // if (!req.files || Object.keys(req.files).length === 0) {
+  //   return res.status(400).send("No images were uploaded.");
+  // }
 
-  imageFile = req.files.imageFile;
-  uploadPath = __dirname + "/uploads/" + imageFile.name;
+  // imageFile = req.files.imageFile;
+  // uploadPath = __dirname + "/uploads/" + imageFile.name;
 
-  imageFile.mv(uploadPath, function (err) {
-    if (err) return res.status(500).send(err);
+  // imageFile.mv(uploadPath, function (err) {
+  //   if (err) return res.status(500).send(err);
+  //   res.send("image uploaded");
+  // });
 
-    res.send("image uploaded");
-  });
   Post.create({
     image: req.body.image,
     title: req.body.title,
     description: req.body.description,
     price: req.body.price,
-    user_id: req.body.user_id,
+    user_id: req.session.user_id,
     category_id: req.body.category_id,
   })
     .then((dbPostData) => res.json(dbPostData))
@@ -85,7 +85,6 @@ router.post("/", (req, res) => {
       console.log(err);
       res.status(500).json(err);
     });
-  console.log(imageFile);
 });
 
 router.put("/:id", withAuth, (req, res) => {

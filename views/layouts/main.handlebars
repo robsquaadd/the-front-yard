@@ -22,26 +22,36 @@
             width="250"
             height="100"
             alt="img"
-            src="./images/image.png"
+            src="/images/image.png"
           />
         </a>
         <div class="col-md-4 text-end">{{#if loggedIn}}
-          <a href="/dashboard"><button type="button listing" class="btn btn-outline-danger me-2">Add
-            Listing</button></a>
-            <button type="button" class="btn btn-danger" id="logout-btn">Logout</button>
-            {{else}}
-          <a href="/login"><button
-            type="button"
-            class="btn btn-outline-danger me-2">Login</button></a>
-           
-          <a href="/login"><button type="button" class="btn btn-danger">Sign-up</button></a>
-           {{/if}}
+            <a href="/dashboard"><button
+                type="button listing"
+                class="btn btn-outline-danger me-2"
+              >Add Listing</button></a>
+            <button
+              type="button"
+              class="btn btn-danger"
+              id="logout-btn"
+            >Logout</button>
+          {{else}}
+            <a href="/login"><button
+                type="button"
+                class="btn btn-outline-danger me-2"
+              >Login</button></a>
+
+            <a href="/login"><button
+                type="button"
+                class="btn btn-danger"
+              >Sign-up</button></a>
+          {{/if}}
         </div>
       </header>
     </div>
     {{{body}}}
     {{#if loggedIn}}
-     <script> src='/javascript/logout.js'</script>
+      <script src="/javascript/logout.js"></script>
     {{/if}}
   </body>
 </html>
