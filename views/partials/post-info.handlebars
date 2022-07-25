@@ -1,0 +1,13 @@
+<article>
+  <div>
+    <a href="/posts/{{id}}"><h3>{{ title }}</h3></a>
+    <p>{{ body }}</p>
+  </div>
+  <div>{{description}}</div>
+  <div>{{price}}</div>
+  <div> 
+     by {{user.username}} on {{format_date created_at}}
+    |
+    <a href="/posts/{{id}}">{{post.length}} </a>
+  </div>
+</article>
