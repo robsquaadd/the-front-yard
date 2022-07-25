@@ -1,10 +1,8 @@
 const loginButtonHandler = async (e) => {
-  console.log("hi");
   e.preventDefault();
-  const email = document.getElementById("email").value.trim();
-  const password = document.getElementById("password").value.trim();
+  const email = document.getElementById("login-email").value.trim();
+  const password = document.getElementById("login-password").value.trim();
   if (email != "" && password != "") {
-    console.log("Hello World");
     const response = await fetch(`/api/users/login`, {
       method: "POST",
       body: JSON.stringify({
@@ -26,6 +24,33 @@ const loginButtonHandler = async (e) => {
   }
 };
 
-document
-  .getElementById("login-button")
-  .addEventListener("click", loginButtonHandler);
+const signupEventHandler = async (e) => {
+  e.preventDefault();
+  const email = document.getElementById("signup-email").value.trim();
+  const username = document.getElementById("signup-username").value.trim();
+  const password = document.getElementById("signup-password").value.trim();
+  if (email && username && password) {
+    const response = await fetch("/api/users", {
+      method: "POST",
+      body: JSON.stringify({
+        username,
+        email,
+        password,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (response.ok) {
+      document.location.replace("/");
+    } else {
+      alert(response.statusText);
+    }
+  }
+};
+
+const loginButton = document.getElementById("login-button");
+loginButton.addEventListener("click", loginButtonHandler);
+
+const signUpForm = document.getElementById("signup-form");
+signUpForm.addEventListener("submit", signUpEventHandler);
