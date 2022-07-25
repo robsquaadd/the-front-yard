@@ -53,4 +53,4 @@ const loginButton = document.getElementById("login-button");
 loginButton.addEventListener("click", loginButtonHandler);
 
 const signUpForm = document.getElementById("signup-form");
-signUpForm.addEventListener("submit", signUpEventHandler);
+signUpForm.addEventListener("submit", signupEventHandler);

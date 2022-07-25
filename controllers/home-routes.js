@@ -24,6 +24,7 @@ router.get("/", (req, res) => {
       res.render("homepage", {
         posts,
         loggedIn: req.session.loggedIn,
+        dashboard: false,
       });
     })
     .catch((err) => {

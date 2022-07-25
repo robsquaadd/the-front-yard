@@ -2,7 +2,7 @@ async function newFormHandler(event) {
   event.preventDefault();
 
   const title = document.querySelector('input[name="post-title"]').value;
-  const image = document.querySelector("input[name=imageFile]").value;
+  //const image = document.querySelector("input[name=imageFile]").value;
   const description = document.querySelector(
     'textarea[name="post-description"]'
   ).value;
@@ -11,7 +11,7 @@ async function newFormHandler(event) {
   const response = await fetch(`/api/posts`, {
     method: "POST",
     body: JSON.stringify({
-      image,
+      //image,
       title,
       description,
       price,
@@ -23,7 +23,7 @@ async function newFormHandler(event) {
   });
 
   if (response.ok) {
-    document.location.replace("/dashboard/");
+    document.location.replace("/dashboard");
   } else {
     alert(response.statusText);
   }
