@@ -29,27 +29,25 @@
                 <p class="card-text">{{price}}</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    {{#if 1}}
-                      <button
+                    {{!-- {{#if dashboard}} --}}
+                       <a href="/dashboard/edit/{{this.id}}"><button
                         type="button"
                         class="btn btn-sm btn-outline-secondary"
-                      >
-                        <a href="/edit/{{id}}">Edit</a>
-                      </button>
-                      <button
-                        type="button"
+                      >Edit
+                      </button></a>
+                        {{!-- <button
+                        type="button" id="delete-btn"
                         class="btn btn-sm btn-outline-danger"
-                      >
-                        <a href="/delete/{{id}}">Delete</a>
-                      </button>
-                    {{else}}
-                      <button
+                      >Delete
+                      </button> --}}
+                      {{!-- {{else}} --}}
+                      <a href="/posts/{{id}}"><button
                         type="button"
                         class="btn btn-sm btn-outline-secondary"
-                      ><a href="/posts/{{id}}">View</a></button>
-                    {{/if}}
+                      > View</button></a>
+                    {{!-- {{/if}} --}}
                   </div>
-                  <small class="text-muted">9 mins</small>
+                    <p>Listed on: {{format_date created_at}}</p>
                 </div>
               </div>
             </div>
@@ -59,3 +57,5 @@
     </div>
   </div>
 </div>
+
+<script src="/javascript/delete-post.js"></script>
