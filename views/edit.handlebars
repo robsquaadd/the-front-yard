@@ -1,0 +1,31 @@
+<article>
+  <a href="/dashboard"><h4>Back</h4></a>
+  <h2>
+    Edit Your Listings
+  </h2>
+  <form class="edit-post-form">
+    {{!-- <h4>Upload photos</h4>
+    <input type="file" name="imageFile" accept="image/*"/> --}}
+    <div>
+      <label for="post-title">Title</label>
+      <input type="text" id="post-title" name="post-title" placeholder="{{post.title}}"/>
+    </div>
+    <div>
+      <label for="post-description">Description</label>
+      <textarea type="text" id="post-description" name="post-description" placeholder="{{post.description}}"></textarea>
+    </div>
+     <div>
+      <label for="post-price">Price</label>
+      <input type="text" id="post-price" name="post-price" placeholder="{{post.price}}"></input>
+    </div>
+    </form>
+      <a href="/posts/{{post.id}}">{{post.length}} {{post.length}}</a>
+    </div>
+    <button id="edit-btn" type="button">Save</button>
+    <button id="delete-btn" type="button">Delete</button>
+  </form>
+</article>
+
+
+<script src="/javascript/edit-post.js"></script>
+<script src="/javascript/delete-post.js"></script>
