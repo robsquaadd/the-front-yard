@@ -54,11 +54,41 @@ router.get("/posts/:id", (req, res) => {
         res.status(404).json({ message: "No post found with this id" });
         return;
       }
-
       const post = dbPostData.get({ plain: true });
-
       res.render("single-post", {
         post,
+        loggedIn: req.session.loggedIn,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.get("/posts/categories/:id", (req, res) => {
+  Post.findAll({
+    where: {
+      category_id: req.params.id,
+    },
+    attributes: ["id", "title", "description", "price", "created_at"],
+    include: [
+      {
+        model: Category,
+        attributes: ["id", "category_name"],
+      },
+      {
+        model: User,
+        attributes: ["username", "email"],
+      },
+    ],
+  })
+    .then((dbPostData) => {
+      const posts = dbPostData.map((post) => {
+        return post.get({ plain: true });
+      });
+      res.render("homepage", {
+        posts,
         loggedIn: req.session.loggedIn,
       });
     })

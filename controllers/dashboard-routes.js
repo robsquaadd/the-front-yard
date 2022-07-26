@@ -25,11 +25,9 @@ router.get("/", (req, res) => {
   })
     .then((dbPostData) => {
       const posts = dbPostData.map((post) => post.get({ plain: true }));
-      
       res.render("dashboard", {
         posts,
         loggedIn: req.session.loggedIn,
-        dashboard: true
       });
     })
     .catch((err) => {
@@ -70,4 +68,3 @@ router.get("/edit/:id", withAuth, (req, res) => {
 });
 
 module.exports = router;
-

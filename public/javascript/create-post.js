@@ -1,13 +1,13 @@
+//TODO: test category element to creating a post.
 async function newFormHandler(event) {
   event.preventDefault();
-
   const title = document.querySelector('input[name="post-title"]').value;
   //const image = document.querySelector("input[name=imageFile]").value;
   const description = document.querySelector(
     'textarea[name="post-description"]'
   ).value;
   const price = document.querySelector('input[name="post-price"]').value;
-
+  const category_id = document.getElementById("post-category").value;
   const response = await fetch(`/api/posts`, {
     method: "POST",
     body: JSON.stringify({
@@ -15,6 +15,7 @@ async function newFormHandler(event) {
       title,
       description,
       price,
+      category_id,
     }),
 
     headers: {
