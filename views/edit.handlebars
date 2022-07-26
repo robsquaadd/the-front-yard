@@ -8,15 +8,15 @@
     <input type="file" name="imageFile" accept="image/*"/> --}}
     <div>
       <label for="post-title">Title</label>
-      <input type="text" id="post-title" name="post-title" placeholder="{{post.title}}"/>
+      <input type="text" id="post-title" name="post-title" value="{{post.title}}"/>
     </div>
     <div>
       <label for="post-description">Description</label>
-      <textarea type="text" id="post-description" name="post-description" placeholder="{{post.description}}"></textarea>
+      <textarea type="text" id="post-description" name="post-description" textContent="{{post.description}}"></textarea>
     </div>
      <div>
       <label for="post-price">Price</label>
-      <input type="text" id="post-price" name="post-price" placeholder="{{post.price}}"></input>
+      <input type="text" id="post-price" name="post-price" value="{{post.price}}"></input>
     </div>
     </form>
       <a href="/posts/{{post.id}}">{{post.length}} {{post.length}}</a>

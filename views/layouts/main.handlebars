@@ -12,11 +12,11 @@
     />
   </head>
   <body>
-    <div class="container">
+    <div class="container-fluid">
       <header
         class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom"
       >
-        <a href="/" class="d-flex col-md-4 mb-2 mb-md-0 text-dark">
+        <a href="/" class="d-flex col mb-2 mb-md-0 text-dark">
           <img
             class="bi me-2"
             width="250"
@@ -25,7 +25,9 @@
             src="/images/image.png"
           />
         </a>
-        <div class="col-md-4 text-end">{{#if loggedIn}}
+        <h2 class="col-12 col-md-4 text-center text-align-center">Your friendly
+          neighborhood marketplace!</h2>
+        <div class="col text-end">{{#if loggedIn}}
             <a href="/dashboard"><button
                 type="button listing"
                 class="btn btn-outline-danger me-2"
@@ -38,13 +40,8 @@
           {{else}}
             <a href="/login"><button
                 type="button"
-                class="btn btn-outline-danger me-2"
-              >Login</button></a>
-
-            <a href="/login"><button
-                type="button"
                 class="btn btn-danger"
-              >Sign-up</button></a>
+              >Login/Sign-up</button></a>
           {{/if}}
         </div>
       </header>
