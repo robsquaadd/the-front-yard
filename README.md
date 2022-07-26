@@ -26,7 +26,11 @@ HTML, JavaScript, CSS, Bootstrap, JavaScript, HandleBars, mySQL, API's, and node
 
 # Future Plans
 
-We would like to implement a more robust search function with more specific tags and a search for specific items. 
+Create a more robust search function
+Allow users to upload photos
+Add a instant or direct messaging system
+Implement or add a payment system
+
 
 # Link
 
