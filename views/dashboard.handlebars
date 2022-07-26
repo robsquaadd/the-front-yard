@@ -1,84 +1,116 @@
+{{! FIXME: use partial and a conditional render to reduce the amount of code }}
+<div class="container-fluid row align-top">
+  <form
+    class="new-post-form col-12 col-md-3 row justify-content-center d-flex"
+    method="POST"
+    enctype="multipart/form-data"
+  >
+    {{! <h4>Upload a photo</h4>
+<input type="file" name="imageFile" accept="image/*"/> }}
+    <div class="form-group">
+      <h3 class="mb-3">Create a Listing</h3>
+      <label for="post-title col-12">Title</label>
+      <input
+        class="col-12 mb-2"
+        type="text"
+        id="post-title"
+        name="post-title"
+      />
+      <label for="post-description col-12">Description</label>
+      <textarea
+        type="text"
+        id="post-description"
+        name="post-description"
+        class="col-12 mb-2"
+      ></textarea>
+      <label for="post-price" class="col-12">Price</label>
+      <input
+        type="text"
+        id="post-price"
+        name="post-price"
+        class="col-12 mb-2"
+      />
+      <label for="post-category" class="col-12">Category</label>
+      <select name="post-category" id="post-category" class="col-12 mb-2">
+        <option value="1">Electronics</option>
+        <option value="2">Furniture</option>
+        <option value="3">Tools</option>
+        <option value="4">Vehciles</option>
+        <option value="5">Miscellaneous</option>
+      </select>
+      <button type="submit" class="col-12 btn btn-danger rounded my-3">Create
+        Listing</button>
+    </div>
+  </form>
 
-<form class="new-post-form" method="POST" enctype="multipart/form-data">
-{{!-- <h4>Upload a photo</h4>
-<input type="file" name="imageFile" accept="image/*"/> --}}
-  <div>
-      <label for="post-title">Title</label>
-      <input type="text" id="post-title" name="post-title" />
-    </div>
-    <div>
-      <label for="post-description">Description</label>
-      <textarea type="text" id="post-description" name="post-description"></textarea>
-    </div>
-     <div>
-      <label for="post-price">Price</label>
-      <input type="text" id="post-price" name="post-price"></input>
-    </div>
-    <button type="submit" class="">Create Listing</button>
-</form>
-
-{{#if posts.length}}
-  <section>
-    <h3>Your Listings</h3>
-    <div>
-      <div class="album py-5 bg-light">
-        <div class="container">
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            {{#each posts as |post|}}
-              <div class="col">
-                <div class="card h-100 shadow-sm">
-                  <svg
-                    class="bd-placeholder-img card-img-top"
-                    width="100%"
-                    height="225"
-                    xmlns="http://www.w3.org/2000/svg"
-                    role="img"
-                    aria-label="Placeholder: Thumbnail"
-                    preserveAspectRatio="xMidYMid slice"
-                    focusable="false"
-                  ><title>Placeholder</title><rect
+  {{#if posts.length}}
+    <section class="col-12 col-md-9">
+      <h3>Your Listings</h3>
+      <div>
+        <div class="album py-5 bg-light">
+          <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+              {{#each posts as |post|}}
+                <div class="col">
+                  <div class="card h-100 shadow-sm">
+                    <svg
+                      class="bd-placeholder-img card-img-top"
                       width="100%"
-                      height="100%"
-                      fill="#55595c"
-                    ></rect><text
-                      x="50%"
-                      y="50%"
-                      fill="#eceeef"
-                      dy=".3em"
-                    >Thumbnail</text></svg>
-                  <div class="card-body">
-                    <h3 class="card-text" overflow="hidden">{{post.title}}</h3>
-                    <p class="card-text">{{post.price}}</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                      <div class="btn-group">
-                        {{!-- {{#if dashboard}} --}}
+                      height="225"
+                      xmlns="http://www.w3.org/2000/svg"
+                      role="img"
+                      aria-label="Placeholder: Thumbnail"
+                      preserveAspectRatio="xMidYMid slice"
+                      focusable="false"
+                    ><title>Placeholder</title><rect
+                        width="100%"
+                        height="100%"
+                        fill="#55595c"
+                      ></rect><text
+                        x="50%"
+                        y="50%"
+                        fill="#eceeef"
+                        dy=".3em"
+                      >Thumbnail</text></svg>
+                    <div class="card-body">
+                      <h3
+                        class="card-text"
+                        overflow="hidden"
+                      >{{post.title}}</h3>
+                      <p class="card-text">{{post.price}}</p>
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group">
+                          {{!-- {{#if dashboard}} --}}
                           <a href="/dashboard/edit/{{post.id}}"><button
-                            type="button"
-                            class="btn btn-sm btn-outline-secondary"
-                          >Edit
-                          </button></a>
-                            {{!-- <button
-                            type="button" id="delete-btn"
-                            class="btn btn-sm btn-outline-danger"
-                          >Delete
-                          </button> --}}
+                              type="button"
+                              class="btn btn-sm btn-outline-secondary"
+                            >Edit
+                            </button></a>
+                          {{! <button
+                              type="button" id="delete-btn"
+                              class="btn btn-sm btn-outline-danger"
+                            >Delete
+                            </button> }}
                           {{!-- {{else}} --}}
                           <a href="/posts/{{post.id}}"><button
-                            type="button"
-                            class="btn btn-sm btn-outline-secondary"
-                          > View</button></a>
-                        {{!-- {{/if}} --}}
-                      </div>
+                              type="button"
+                              class="btn btn-sm btn-outline-secondary"
+                            > View</button></a>
+                          {{!-- {{/if}} --}}
+                        </div>
                         <p>Listed on: {{format_date created_at}}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            {{/each}}
+              {{/each}}
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-{{/if}}
+    </section>
+  {{/if}}
+</div>
 <script src="/javascript/create-post.js"></script>
