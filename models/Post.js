@@ -12,7 +12,7 @@ Post.init(
       autoIncrement: true,
     },
     image: {
-      type: DataTypes.BLOB,
+      type: DataTypes.TEXT,
       allowNull: true,
       // validate: {
       //   len: [100]

@@ -55,6 +55,8 @@ router.get("/posts/:id", (req, res) => {
         return;
       }
       const post = dbPostData.get({ plain: true });
+      const base = Buffer.from(post.image.data);
+      post.image = base.toString("base64");
       res.render("single-post", {
         post,
         loggedIn: req.session.loggedIn,
