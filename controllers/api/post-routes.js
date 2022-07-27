@@ -71,7 +71,7 @@ router.post("/", (req, res) => {
   //   if (err) return res.status(500).send(err);
   //   res.send("image uploaded");
   // });
-
+  console.log(req.files);
   Post.create({
     image: req.body.image,
     title: req.body.title,

@@ -18,15 +18,10 @@
                   width="100%"
                   height="100%"
                   fill="#55595c"
-                ></rect><text
-                  x="50%"
-                  y="50%"
-                  fill="#eceeef"
-                  dy=".3em"
-                >Thumbnail</text></svg>
+                ></rect></svg>
               <div class="card-body">
                 <h3 class="card-text" overflow="hidden">{{title}}</h3>
-                <p class="card-text">{{price}}</p>
+                <p class="card-text">Price: ${{price}}</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
                     {{!-- {{#if dashboard}} --}}
@@ -47,8 +42,8 @@
                       > View</button></a>
                     {{!-- {{/if}} --}}
                   </div>
-                  <p>Listed on: {{format_date created_at}}</p>
                 </div>
+                <p class="mt-2">Listed on: {{format_date created_at}}</p>
               </div>
             </div>
           </div>
